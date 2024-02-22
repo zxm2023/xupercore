@@ -92,7 +92,12 @@ func NewPluggableConsensus(cCtx cctx.ConsensusCtx) (PluggableConsensusInterface,
 		}
 		pc.stepConsensus.put(genesisConsensus)
 		// 启动实例
-		genesisConsensus.Start()
+		err = genesisConsensus.Start()
+		if err != nil {
+			cCtx.XLog.Error("Pluggable Consensus::NewPluggableConsensus::start first consensus item error!", "error", err.Error())
+			return nil, err
+		}
+
 		cCtx.XLog.Debug("Pluggable Consensus::NewPluggableConsensus::create a instance for the first time.")
 		return pc, nil
 	}

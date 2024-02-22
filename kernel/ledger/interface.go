@@ -16,6 +16,7 @@ type BlockHandle interface {
 	GetSign() []byte
 	GetTxIDs() []string
 	GetInTrunk() bool
+	GetBytes() []byte
 }
 
 type XMSnapshotReader interface {

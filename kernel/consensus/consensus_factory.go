@@ -26,6 +26,9 @@ func NewPluginConsensus(cCtx cctx.ConsensusCtx, cCfg def.ConsensusConfig) (Conse
 	if cCfg.ConsensusName == "" {
 		return nil, EmptyConsensusName
 	}
+
+	cCtx.GetLog().Info("NewPluginConsensus", "consensusName", cCfg.ConsensusName)
+
 	if cCfg.StartHeight < 0 {
 		return nil, BeginBlockIdErr
 	}

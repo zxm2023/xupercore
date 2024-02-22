@@ -3,6 +3,7 @@ package context
 
 import (
 	"github.com/xuperchain/xupercore/kernel/common/xaddress"
+	xconf "github.com/xuperchain/xupercore/kernel/common/xconfig"
 	xctx "github.com/xuperchain/xupercore/kernel/common/xcontext"
 	"github.com/xuperchain/xupercore/kernel/contract"
 	"github.com/xuperchain/xupercore/kernel/ledger"
@@ -31,6 +32,7 @@ type LedgerRely interface {
 type ConsensusCtx struct {
 	xctx.BaseCtx
 	BcName   string
+	EnvCfg   *xconf.EnvConf
 	Address  *Address
 	Crypto   cryptoBase.CryptoClient
 	Contract contract.Manager

@@ -4,6 +4,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+
+	"github.com/golang/protobuf/proto"
+
 	"github.com/xuperchain/xupercore/bcs/ledger/xledger/ledger"
 	lpb "github.com/xuperchain/xupercore/bcs/ledger/xledger/xldgpb"
 )
@@ -122,5 +125,9 @@ func (t *BlockAgent) GetTxIDs() []string {
 		txIDs = append(txIDs, hex.EncodeToString(tx.Txid))
 	}
 	return txIDs
+}
 
+func (t *BlockAgent) GetBytes() []byte {
+	bytes, _ := proto.Marshal(t.blk)
+	return bytes
 }

@@ -1,6 +1,7 @@
 package mock
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"math/big"
@@ -120,6 +121,10 @@ func (b *FakeBlock) GetNextHash() []byte {
 }
 func (b *FakeBlock) GetTxIDs() []string {
 	return []string{}
+}
+func (b *FakeBlock) GetBytes() []byte {
+	bytes, _ := json.Marshal(b)
+	return bytes
 }
 
 type FakeMeta struct {

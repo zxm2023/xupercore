@@ -155,6 +155,7 @@ func (t *ChainRelyAgentImpl) CreateConsensus() (consensus.PluggableConsensusInte
 	legAgent := NewLedgerAgent(ctx)
 	consCtx := cctx.ConsensusCtx{
 		BcName:   ctx.BCName,
+		EnvCfg:   ctx.EngCtx.EnvCfg,
 		Address:  (*cctx.Address)(ctx.Address),
 		Crypto:   ctx.Crypto,
 		Contract: ctx.Contract,

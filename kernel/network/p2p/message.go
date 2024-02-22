@@ -28,6 +28,16 @@ const (
 
 // NewMessage create P2P message instance with given params
 func NewMessage(typ pb.XuperMessage_MessageType, message proto.Message, opts ...MessageOption) *pb.XuperMessage {
+	var data []byte
+	if message != nil {
+		data, _ = proto.Marshal(message)
+	}
+
+	return NewMessageWithData(typ, data, opts...)
+}
+
+// NewMessageWithData create P2P message instance with given data.
+func NewMessageWithData(typ pb.XuperMessage_MessageType, data []byte, opts ...MessageOption) *pb.XuperMessage {
 	msg := &pb.XuperMessage{
 		Header: &pb.XuperMessage_MessageHeader{
 			Version:        MessageVersion3,
@@ -40,10 +50,7 @@ func NewMessage(typ pb.XuperMessage_MessageType, message proto.Message, opts ...
 		Data: &pb.XuperMessage_MessageData{},
 	}
 
-	if message != nil {
-		data, _ := proto.Marshal(message)
-		msg.Data.MsgInfo = data
-	}
+	msg.Data.MsgInfo = data
 
 	for _, op := range opts {
 		op(msg)

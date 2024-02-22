@@ -64,6 +64,13 @@ message XuperMessage {
 
         GET_BLOCK_TXS = 28;
         GET_BLOCKS_TXS_RES = 29;
+
+        /*
+         * raft message
+         * raft message is a special message, it will be sent by raft node
+         * and will not be broadcast to other nodes which not in cluster
+        */
+        RAFT_MESSAGE = 30;
     }
 
     enum ErrorType {

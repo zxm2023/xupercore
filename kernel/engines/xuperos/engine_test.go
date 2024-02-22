@@ -8,6 +8,7 @@ import (
 
 	// import要使用的内核核心组件驱动
 	_ "github.com/xuperchain/xupercore/bcs/consensus/pow"
+	_ "github.com/xuperchain/xupercore/bcs/consensus/raft"
 	_ "github.com/xuperchain/xupercore/bcs/consensus/single"
 	_ "github.com/xuperchain/xupercore/bcs/consensus/tdpos"
 	_ "github.com/xuperchain/xupercore/bcs/consensus/xpoa"
